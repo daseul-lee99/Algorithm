@@ -62,7 +62,7 @@ public class P13460_구슬탈출2 {
 		}
 		else if(dy==-1) { // 위쪽으로
 			boolean move = true;
-			while(move && !r_hole && !b_hole) {
+			while(move) {
 				move = false;
 				
 				if(!r_hole && 0<ry+dy && (board_cpy[ry+dy][rx]=='.' || board_cpy[ry+dy][rx]=='O')) {
@@ -81,7 +81,7 @@ public class P13460_구슬탈출2 {
 		}
 		else { // 아래쪽으로
 			boolean move = true;
-			while(move && !r_hole && !b_hole) {
+			while(move) {
 				move = false;
 				
 				if(!r_hole && ry+dy<N-1 && (board_cpy[ry+dy][rx]=='.' || board_cpy[ry+dy][rx]=='O')) {
@@ -100,15 +100,11 @@ public class P13460_구슬탈출2 {
 		}
 		// END: 기울이기 //
 		
-		// 구슬 이동 후 구슬 위치 확인 //
-//		if(r_hole && !b_hole) return true;
-//		else return false;
-		// END: 구슬 이동 후 구슬 위치 확인 //
 		return board_cpy;
 	}
 	
 	private static void run(int n, int i, char[][] board) {
-		if(n>10) return;
+		if(n>10 || n>=min) return;
 		
 		// 구슬 위치 확인 //
 		int by = 0, bx = 0, ry = 0, rx = 0;
