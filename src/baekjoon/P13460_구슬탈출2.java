@@ -3,6 +3,16 @@ package baekjoon;
 import java.io.*;
 import java.util.*;
 
+/*
+ * DFS
+ * 구슬을 각 방향(왼쪽, 오른쪽, 위, 아래)으로 끝까지 이동(기울임)시킨 후,
+ * 구멍에 들어갔는지 확인
+ * DFS로 완전탐색해서 최소 기울임 횟수를 찾음
+ * 
+ * 
+ * 속도를 줄일 수 있는 방법 생각해보기
+ * */
+
 public class P13460_구슬탈출2 {
 	public static int N, M;
 	public static int hole_y, hole_x;
@@ -117,19 +127,18 @@ public class P13460_구슬탈출2 {
 		}
 		//  END: 구슬 위치 확인 //
 		
-		// 구슬 이동 후 구멍이 들어갔는지 확인 //
+		// 구슬이 구멍에 들어갔는지 확인 //
 		if(!find_b || (!find_b && !find_r)) return;
 		else if(!find_r) {
 			min = Math.min(min, n);
 			return;
 		}
-		// END: 구슬 이동 후 구멍이 들어갔는지 확인 //
+		// END: 구슬이 구멍에 들어갔는지 확인 //
 		
 		for(int j = 0; j < 4; j++) { // 기울이는 방향 4가지
 			char[][] board_cpy = tilting(j, by, bx, ry, rx, board);
 			run(n+1, j, board_cpy);
 		}
-		
 	}
 
 	public static void main(String[] args) throws Exception{
